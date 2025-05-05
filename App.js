@@ -1,19 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import React, {useState} from 'react';
+
 
 export default function App() {
-  const [Valor, setValor] = useState(0);
+ const [contador, setContador] = useState(0)
 
-  const cambiarValor = () =>
+
+  sumarPropiedad = () =>
   {
-    setValor(valor + 1);
-  };
-  
+    setContador(contador + 1)
+  }
+  restarPropiedad = () =>
+  {
+    setContador(contador - 1)
+  }
+  reiniciarPropiedad = () =>
+  {
+    setContador(contador == 0)
+  }
   return (
     <View style={styles.container}>
-       <Text style={styles.texto}>Valor: {valor}</Text>
-       <Button onPress={cambiarValor} />
+       <Text style={styles.texto}>Valor: {contador} </Text>
         <StatusBar style="auto" />
+        <Button onPress={sumarPropiedad} title="Sumar" color="#008000"/>
+        <Button onPress={restarPropiedad} title="Restar" color="#ff0000"/>
+        <Button onPress={reiniciarPropiedad} title="Reiniciar" color="#ff0000"/>
     </View>
   );
 }
